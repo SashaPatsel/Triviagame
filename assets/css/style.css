@@ -1,0 +1,21 @@
+body {
+	background-image: url("../images/kings-landing1.jpg");
+	background-repeat: no-repeat;
+	background-size: 100%;
+	font-family: fantasy;
+	color: white;
+}
+
+h1 {
+	text-align: center;
+	font-size: 60px;
+}
+
+h2 {
+	text-align: center;
+}
+
+.audio-player {
+	width: 99px;
+	margin-top: 30px;
+}
