@@ -4,28 +4,77 @@
 // 2. Arrays of questions/or object containing multiple arrays √
 // 3. Create a for loop to append new questions to form 
 
-$(document).ready(function() {
-	
-  timeConverter: function(t) {
+window.onload = function() {
+	startTimer();
+	finishGame();
 
-    var minutes = Math.floor(t / 60);
-    var seconds = t - (minutes * 60);
+	$("input").on("click", function() {
+	  if ($(this).val() == 1) {
+		  correct ++;
+	  }
+	  else {
+	  	incorrect ++;
+	  }
+	  	console.log(correct)
+	  	console.log(incorrect)
+	});
+}
 
-    if (seconds < 10) {
-      seconds = "0" + seconds;
-    }
+//Global vars:
+var timeInterval;
+var countDown = 101;
+var correct = 0;
+var incorrect = 0;
 
-    if (minutes === 0) {
-      minutes = "00";
-    }
-    else if (minutes < 10) {
-      minutes = "0" + minutes;
-    }
+		function startTimer() {
+			timeInterval = setInterval(counter, 1000)
+		}
 
-    return minutes + ":" + seconds;
-  }
+		function hideStats () {
+			
+		}
 
-});
+		function counter () {
+			countDown --;
+			var convert = timeConverter(countDown);
+			$(".count-down").text(convert)
+		}
+		
+		//Displays remaining time like an actual clock
+	 function timeConverter(t) {
+
+	    var minutes = Math.floor(t / 60);
+	    var seconds = t - (minutes * 60);
+
+	    if (seconds < 10) {
+	      seconds = "0" + seconds;
+	    }
+
+	    if (minutes === 0) {
+	      minutes = "00";
+	    }
+	    else if (minutes < 10) {
+	      minutes = "0" + minutes;
+	    }
+
+	    return minutes + ":" + seconds;
+	  };
+
+	  // function keepScore () {
+
+
+	  // }
+
+	  function finishGame() {
+		  if (countDown === 0) {
+		  	showGameStats();
+		  }
+
+		};
+
+		function showGameStats () {
+			$(".trivia-part").remove();
+		}
 
 
 // var me = setTimeout(101000);
