@@ -5,14 +5,25 @@ body {
 	font-family: fantasy;
 	color: rgb(229,183,43);
 	text-align: center;
+	font-size: 20px;
 }
 
 h1 {
 	font-size: 60px;
 	border-bottom: 2px solid rgb(229,183,43);
+	color: rgb(134,4,32)
+}
+
+h2 {
+	font-size: 40px;
 }
 
 .audio-player {
+	width: 99px;
+	margin-top: 30px;
+}
+
+.audio-player1 {
 	width: 99px;
 	margin-top: 30px;
 }
@@ -55,6 +66,18 @@ h1 {
 	padding: 10px;
 	background-color: rgb(134,4,32);
 	border: solid 2px rgb(229,183,43);
+}
+
+.all-done {
+	padding: 10px;
+	background-color: rgb(134,4,32);
+	border: solid 2px rgb(229,183,43);
+	font-size: 50px;
+}
+
+
+.all-done:hover {
+	opacity: .7;
 }
 
 

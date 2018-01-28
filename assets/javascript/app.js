@@ -19,17 +19,25 @@ window.onload = function() {
 	  	console.log(incorrect)
 
 	});
+
+	$(".all-done").on("click", function() {
+		showGameStats();
+		audio1.get(0).remove();
+		audio2.get(0).play();
+	});
 }
 
 //Global vars:
 var timeInterval;
-var countDown = 1;
+var countDown = 101;
 var correct = 0;
 var incorrect = 0;
+var audio1 = $(".audio-player");
+var audio2 = $(".audio-player1");
 
 		function startTimer() {
 			timeInterval = setInterval(counter, 1000);
-				
+			audio2.get(0).pause();
 		}
 
 		function hideStats () {
@@ -71,7 +79,8 @@ var incorrect = 0;
 	  function finishGame() {
 		  if (countDown < 1) {
 		  	showGameStats();
-				console.log("game's cashed")
+				audio1.get(0).remove();
+				audio2.get(0).play();
 		  }
 
 		};
