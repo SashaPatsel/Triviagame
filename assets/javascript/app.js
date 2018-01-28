@@ -22,8 +22,7 @@ window.onload = function() {
 
 	$(".all-done").on("click", function() {
 		showGameStats();
-		audio1.get(0).remove();
-		audio2.get(0).play();
+		gameFinished();
 	});
 }
 
@@ -31,6 +30,8 @@ window.onload = function() {
 var timeInterval;
 var countDown = 101;
 var correct = 0;
+var totalQuests = 10;
+var winPercentage;
 var incorrect = 0;
 var audio1 = $(".audio-player");
 var audio2 = $(".audio-player1");
@@ -48,7 +49,7 @@ var audio2 = $(".audio-player1");
 			countDown --;
 			var convert = timeConverter(countDown);
 			$(".count-down").text(convert);
-			finishGame();
+			timeDone();
 		}
 		
 		//Displays remaining time like an actual clock
@@ -76,7 +77,7 @@ var audio2 = $(".audio-player1");
 
 	  // }
 
-	  function finishGame() {
+	  function timeDone() {
 		  if (countDown < 1) {
 		  	showGameStats();
 				audio1.get(0).remove();
@@ -85,9 +86,20 @@ var audio2 = $(".audio-player1");
 
 		};
 
+		function gameFinished () {
+		  showGameStats();
+			audio1.get(0).remove();
+			audio2.get(0).play();	
+		}
+
 		function showGameStats () {
 			$(".trivia-part").remove();
 			$(".game-stats").show();
+			winPercentage = correct/totalQuests*100;
+			console.log(winPercentage);
+			$(".correct").text("Correct Answers: " + correct);
+			$(".incorrect").text("Incorrect Answers: " + incorrect);
+			$(".percentage").text("Percent Answered Correctly: " + winPercentage + "%");
 		}
 
 
