@@ -6,7 +6,7 @@
 
 window.onload = function() {
 	startTimer();
-	finishGame();
+	hideStats();
 
 	$("input").on("click", function() {
 	  if ($(this).val() == 1) {
@@ -17,27 +17,30 @@ window.onload = function() {
 	  }
 	  	console.log(correct)
 	  	console.log(incorrect)
+
 	});
 }
 
 //Global vars:
 var timeInterval;
-var countDown = 101;
+var countDown = 1;
 var correct = 0;
 var incorrect = 0;
 
 		function startTimer() {
-			timeInterval = setInterval(counter, 1000)
+			timeInterval = setInterval(counter, 1000);
+				
 		}
 
 		function hideStats () {
-			
+			$(".game-stats").hide();
 		}
 
 		function counter () {
 			countDown --;
 			var convert = timeConverter(countDown);
-			$(".count-down").text(convert)
+			$(".count-down").text(convert);
+			finishGame();
 		}
 		
 		//Displays remaining time like an actual clock
@@ -66,14 +69,16 @@ var incorrect = 0;
 	  // }
 
 	  function finishGame() {
-		  if (countDown === 0) {
+		  if (countDown < 1) {
 		  	showGameStats();
+				console.log("game's cashed")
 		  }
 
 		};
 
 		function showGameStats () {
 			$(".trivia-part").remove();
+			$(".game-stats").show();
 		}
 
 
