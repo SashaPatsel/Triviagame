@@ -1,21 +1,67 @@
 body {
-	background-image: url("../images/kings-landing1.jpg");
+/*	background-image: url("../images/kings-landing1.jpg");
 	background-repeat: no-repeat;
-	background-size: 100%;
+	background-size: 100%;*/
 	font-family: fantasy;
-	color: white;
+	color: rgb(229,183,43);
+	text-align: center;
 }
 
 h1 {
-	text-align: center;
 	font-size: 60px;
-}
-
-h2 {
-	text-align: center;
+	border-bottom: 2px solid rgb(229,183,43);
 }
 
 .audio-player {
 	width: 99px;
 	margin-top: 30px;
 }
+
+.my-border {
+	border: solid 3px rgb(229,183,43);
+	background-color: rgba(134,4,32,0.4);
+}
+
+.back-pics {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	left: 0;
+	z-index: -1;
+}
+
+.back-pics1 {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	left: 0;
+	z-index: -1;
+	top: 100%;
+}
+
+.back-pics2 {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	left: 0;
+	z-index: -1;
+	top: 200%;
+}
+
+.time-left {
+	position: fixed;
+	right: 10px;
+	top: 50%;
+	padding: 10px;
+	background-color: rgb(134,4,32);
+	border: solid 2px rgb(229,183,43);
+}
+
+
+
+
+
+
+
+/*rgba(33,84,102,0.5)*/
+/*rgb(200,200,240)*/
