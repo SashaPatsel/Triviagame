@@ -78,20 +78,25 @@ input {
 }
 
 
-.all-done:hover {
-	opacity: .7;
-}
-
 .stats {
-	background-color: rgba(134,4,32,.6);
+	background-color: rgba(134,4,32,.7);
 	border: solid 2px rgb(229,183,43);
 }
 
+label {
+	transition: all 0.2s ease-in;
+    text-decoration:none;
+}
 
+label:hover {
+	-webkit-stroke-width: 5.3px;
+    -webkit-stroke-color: #FFFFFF;
+    -webkit-fill-color: #FFFFFF;
+    text-shadow: 1px 0px 20px yellow;
+}
 
+.radio-got [type="radio"]:checked+label:after {
+    border-color: #00C851;
+    background-color: #00C851;
+}
 
-
-
-
-/*rgba(33,84,102,0.5)*/
-/*rgb(200,200,240)*/
