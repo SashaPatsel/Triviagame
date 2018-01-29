@@ -35,6 +35,11 @@ input {
 	background-color: rgba(134,4,32,0.4);
 }
 
+.my-border1 {
+	border: solid 3px rgb(229,183,43);
+	background-color: rgba(134,4,32,0.4);
+}
+
 .back-pics {
 	position: absolute;
 	width: 100%;

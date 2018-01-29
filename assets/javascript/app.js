@@ -1,8 +1,4 @@
-// Steps:
-//
-// 1. CSS √
-// 2. Arrays of questions/or object containing multiple arrays √
-// 3. Create a for loop to append new questions to form 
+
 
 window.onload = function() {
 	startTimer();
@@ -101,7 +97,3 @@ var audio2 = $(".audio-player1");
 			$(".incorrect").text("Incorrect Answers: " + incorrect);
 			$(".percentage").text("Percent Answered Correctly: " + winPercentage + "%");
 		}
-
-
-// var me = setTimeout(101000);
-// setInterval(101000);
