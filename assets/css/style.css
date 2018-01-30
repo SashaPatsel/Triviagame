@@ -66,6 +66,15 @@ input {
 	top: 200%;
 }
 
+.back-pics3 {
+	position: absolute;
+	width: 100%;
+	height: auto;
+	left: 0;
+	z-index: -1;
+	top: 300%;
+}
+
 .time-left {
 	position: fixed;
 	right: 10px;

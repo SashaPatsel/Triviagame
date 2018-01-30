@@ -2,22 +2,25 @@
 window.onload = function() {
   startTimer();
   hideStats();
-  $(document).ready(function(){
   newQuest();
-  });
+  correctAnswer();
   
 
-  $("input").on("click", function() {
-    if ($(this).val() == 1) {
-      correct ++;
-    }
-    else {
-      incorrect ++;
-    }
-      console.log(correct)
-      console.log(incorrect)
 
-  });
+
+  // $("input").on("click", function() {
+  //   for (var i = 0 ; i < quizQuest.goodGuesses.length ; i++) {
+  //     if ($("input:checked + label").text() === quizQuest.goodGuesses[i]) {
+  //       correct ++;
+  //     }
+
+  //     else if ($("input:checked + label").text() !== quizQuest.goodGuesses[i]) {
+  //       incorrect ++;
+  //     }
+  //     console.log(correct)
+  //     console.log(incorrect)
+  //   }
+  // });
 
   $(".all-done").on("click", function() {
     showGameStats();
@@ -31,7 +34,7 @@ var countDown = 101;
 var correct = 0;
 var totalQuests = 10;
 var winPercentage;
-var incorrect = 0;
+var incorrect = 10;
 var audio1 = $(".audio-player");
 var audio2 = $(".audio-player1");
 var answer1;
@@ -43,6 +46,7 @@ var answerIndex;
 
 //Object containing the answers and questions
   var quizQuest = {
+    goodGuesses: ["Aegon, The Conqueror", "Bran, The Builder", "Casterly Rock", "Qarth", "Melisandre", "Oberyn Martell", "Mance Rayder", "Syrio Forell", "Kissed by Fire", "Ser Arthur Dayne"],
     questions: { 
       q1: "Who established the Targaryen dynasty in Westeros?",
       q2: "Who built Winterfell and The Wall?",
@@ -68,6 +72,7 @@ var answerIndex;
       a9: ["Born with fire", "0", "Fire Tops", "0", "Kissed by Fire", "1", "The Shield that guards the realms of men", "0"],
       a10: ["Ser Arthur Dayne", "1", "Ser Mandon Moore", "0", "Ser Baristan Selmy", "0", "Strong Belwas", "0"]
     }
+    
   } 
 
     function startTimer() {
@@ -116,30 +121,36 @@ var answerIndex;
         '<h2>' + questionIndex + '</h2>' + '</div>' + '</div>' +
         '<div class="row">' + '<div class="col-md-2">' + '</div>' + 
         '<form>' + '<div class="col-md-2 radio-got">' + 
-        '<input type="radio" name="a10" value="0" unchecked>' +
+        '<input type="radio" name="a10" unchecked>' +
         '<label>' + answerIndex[0] + '</label>' + '</div>' + 
-        '<div class="col-md-2">' +'<input type="radio" name="a10" value="0" unchecked>' +
+        '<div class="col-md-2">' +'<input type="radio" name="a10" unchecked>' +
         '<label>' + answerIndex[2] + '</label>' + '</div>' + '<div class="col-md-2">' + 
-        '<input type="radio" name="a10" value="1" unchecked>' + 
+        '<input type="radio" name="a10" unchecked>' + 
         '<label>' + answerIndex[4] + '</label>' + '</div>' + 
-        '<div class="col-md-2">' + '<input type="radio" name="a10" value="0" unchecked>' +
+        '<div class="col-md-2">' + '<input type="radio" name="a10" unchecked>' +
         '<label>' + answerIndex[6] + '</label>' + '</div>' + 
         '</form>' + '<div class="col-md-2">' + '</div>' + '</div>' +
-        '<br>' + '</div>' + '<br>');      
+        '<br>' + '</div>' + '<br>');
+        
       }
-    }
+    };  
 
-  // $(".rando-div").append('<div class="my-border">' + 
-  //         questionIndex + '<br>' + answerIndex[0] + 
-  //         answerIndex[2] + answerIndex[4] + answerIndex[6] + 
-  //         '</div>' + '<br>');
+
+
     function correctAnswer() {
-      for (var i = 1 ; i < 8; i++) {
-          if (answerIndex[i] == "1") {
-            answerIndex[i-1].val(1)
-          }
+      for (var i = 0 ; i < quizQuest.goodGuesses.length ; i++) {
+        if ($("input:checked + label").text() === quizQuest.goodGuesses[i]) {
+          correct ++;
+          incorrect --;
+        }
+
+        // else if ($("input:checked + label").text() !== quizQuest.goodGuesses[i]) {
+        //   incorrect --;
+        // }
+        console.log(correct)
+        console.log(incorrect)
       }
-    }
+    }  
 
     function timeDone() {
       if (countDown < 1) {
@@ -151,13 +162,16 @@ var answerIndex;
     };
 
     function gameFinished () {
+
       showGameStats();
+      
       audio1.get(0).remove();
       audio2.get(0).play(); 
-    }
+      
+    };  
 
     function showGameStats () {
-      $(".trivia-part").remove();
+      $(".trivia-part").hide();
       $(".game-stats").show();
       winPercentage = correct/totalQuests*100;
       $(".correct").text("Correct Answers: " + correct);
