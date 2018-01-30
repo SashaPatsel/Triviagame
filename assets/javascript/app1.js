@@ -3,24 +3,19 @@ window.onload = function() {
   startTimer();
   hideStats();
   newQuest();
-  correctAnswer();
   
 
+            $("input").on("click", function() {
+          if ($(this).attr("value", questionIndex[5])) {
+            correct ++;
+            incorrect--;
+          }
+            console.log(correct)
+            console.log(incorrect)
+
+        });
 
 
-  // $("input").on("click", function() {
-  //   for (var i = 0 ; i < quizQuest.goodGuesses.length ; i++) {
-  //     if ($("input:checked + label").text() === quizQuest.goodGuesses[i]) {
-  //       correct ++;
-  //     }
-
-  //     else if ($("input:checked + label").text() !== quizQuest.goodGuesses[i]) {
-  //       incorrect ++;
-  //     }
-  //     console.log(correct)
-  //     console.log(incorrect)
-  //   }
-  // });
 
   $(".all-done").on("click", function() {
     showGameStats();
@@ -46,32 +41,20 @@ var answerIndex;
 
 //Object containing the answers and questions
   var quizQuest = {
-    goodGuesses: ["Aegon, The Conqueror", "Bran, The Builder", "Casterly Rock", "Qarth", "Melisandre", "Oberyn Martell", "Mance Rayder", "Syrio Forell", "Kissed by Fire", "Ser Arthur Dayne"],
-    questions: { 
-      q1: "Who established the Targaryen dynasty in Westeros?",
-      q2: "Who built Winterfell and The Wall?",
-      q3: "What is the capital of the West in Westeros?",
-      q4: "What city does Danaerys take refuge in shortly after the birth of her dragons?",
-      q5: "What is the name of the red priestess who councils Stannis Baratheon?",
-      q6: "Who is know as the Red Viper of Dorne?",
-      q7: "Who is known as King Beyond The Wall?",
-      q8: "Who was Arya Stark's Dancing Master?",
-      q9: "What is said of red-headed wildlings?",
-      q10: "Who was known as the Sword of the Morning?"
-    },
+  
 
-    answers: {
-      a1: ["Aemon, The Dragon Knight", "0", "Maegor, The Cruel", "0", "Aegon, The Conqueror", "1", "Brynden Blackfish", "0"],
-      a2: ["Bran, The Builder", "1", "Cotter Pyke", "0", "Prince Theon of Winterfell", "0", "Maester Luwin", "0"],
-      a3: ["Lannisport", "0", "The Vale", "0", "High Garden", "0", "Casterly Rock", "1"],
-      a4: ["Lazereen", "0", "Qohor", "0", "Dragon Stone", "0", "Qarth", "1"],
-      a5: ["Mirri Maz Dur", "0", "Melisandre", "1", "Osha", "0", "Salaador San", "0"],
-      a6: ["Quentyn Martell", "0", "Princess Myrcella", "0", "Oberyn Martell", "1", "Gregor Clegane", "0"],
-      a7: ["Mance Rayder", "1", "Varamir Six Skins", "0", "Jeor Mormont", "0", "Jojen Reed", "0"],
-      a8: ["Meryn Trant", "0", "Septa Mordane", "0", "Syrio Forell", "1", "Jaqen Hagar", "0"],
-      a9: ["Born with fire", "0", "Fire Tops", "0", "Kissed by Fire", "1", "The Shield that guards the realms of men", "0"],
-      a10: ["Ser Arthur Dayne", "1", "Ser Mandon Moore", "0", "Ser Baristan Selmy", "0", "Strong Belwas", "0"]
-    }
+    questions: { 
+      q1: ["Who established the Targaryen dynasty in Westeros?", "Aemon, The Dragon Knight", "Maegor, The Cruel", "Aegon, The Conqueror", "Brynden Blackfish", "3"],
+      q2: ["Who built Winterfell and The Wall?", "Bran, The Builder", "Cotter Pyke", "Prince Theon of Winterfell", "Maester Luwin", "1"],
+      q3: ["What is the capital of the West in Westeros?", "Lannisport", "The Vale", "High Garden", "Casterly Rock", "4"],
+      q4: ["What city does Danaerys take refuge in shortly after the birth of her dragons?", "Lazereen", "Qohor", "Dragon Stone", "Qarth", "4"],
+      q5: ["What is the name of the red priestess who councils Stannis Baratheon?", "Mirri Maz Dur", "Melisandre", "Osha", "Salaador San", "2"],
+      q6: ["Who is know as the Red Viper of Dorne?", "Quentyn Martell", "Princess Myrcella", "Oberyn Martell", "Gregor Clegane", "3"],
+      q7: ["Who is known as King Beyond The Wall?","Mance Rayder", "Varamir Six Skins", "Jeor Mormont", "Jojen Reed", "1"],
+      q8: ["Who was Arya Stark's Dancing Master?", "Meryn Trant", "Septa Mordane", "Syrio Forell", "Jaqen Hagar", "3"],
+      q9: ["What is said of red-headed wildlings?", "Born with fire", "Fire Tops", "Kissed by Fire", "The Shield that guards the realms of men", "3"],
+      q10: ["Who was known as the Sword of the Morning?", "Ser Arthur Dayne", "Ser Mandon Moore", "Ser Baristan Selmy", "Strong Belwas", "1"]
+    },
     
   } 
 
@@ -114,23 +97,31 @@ var answerIndex;
     function newQuest () {
         
       for (var i = 1 ; i < 11 ; i++) {
-        answerIndex = quizQuest.answers["a"+i];
+        // answerIndex = quizQuest.answers["a"+i];
+
+        // var radio = $("<input>")
+        // radio.addClass()
+        // radio.attr("name", "a"+1);
+
         questionIndex = quizQuest.questions["q"+i];
       $(".rando-div").append('<div class="my-border new-quest">' + 
         '<div class="row">' + '<div class="col-md-12">' + 
-        '<h2>' + questionIndex + '</h2>' + '</div>' + '</div>' +
+        '<h2>' + questionIndex[0] + '</h2>' + '</div>' + '</div>' +
         '<div class="row">' + '<div class="col-md-2">' + '</div>' + 
-        '<form>' + '<div class="col-md-2 radio-got">' + 
-        '<input type="radio" name="a10" unchecked>' +
-        '<label>' + answerIndex[0] + '</label>' + '</div>' + 
-        '<div class="col-md-2">' +'<input type="radio" name="a10" unchecked>' +
-        '<label>' + answerIndex[2] + '</label>' + '</div>' + '<div class="col-md-2">' + 
-        '<input type="radio" name="a10" unchecked>' + 
-        '<label>' + answerIndex[4] + '</label>' + '</div>' + 
-        '<div class="col-md-2">' + '<input type="radio" name="a10" unchecked>' +
-        '<label>' + answerIndex[6] + '</label>' + '</div>' + 
+        '<form>' + '<div class="col-md-2 radio-got">' + '<label>' +
+        '<input type="radio" name="a' + i + ' value=1">' +
+         questionIndex[1] + '</label>' + '</div>' + 
+        '<div class="col-md-2">' + '<label>' +'<input type="radio" name="a' + i + 'value = 2">' +
+         questionIndex[2] + '</label>' + '</div>' + '<div class="col-md-2">' + 
+        '<label>' + '<input type="radio" name="a' + i + ' value = 3">' + 
+        questionIndex[3] + '</label>' + '</div>' + 
+        '<div class="col-md-2">' + '<label>' + '<input type="radio" name="a' + i + ' value = 4">' +
+        questionIndex[4] + '</label>' + '</div>' + 
         '</form>' + '<div class="col-md-2">' + '</div>' + '</div>' +
         '<br>' + '</div>' + '<br>');
+
+
+  
         
       }
     };  
@@ -138,18 +129,8 @@ var answerIndex;
 
 
     function correctAnswer() {
-      for (var i = 0 ; i < quizQuest.goodGuesses.length ; i++) {
-        if ($("input:checked + label").text() === quizQuest.goodGuesses[i]) {
-          correct ++;
-          incorrect --;
-        }
-
-        // else if ($("input:checked + label").text() !== quizQuest.goodGuesses[i]) {
-        //   incorrect --;
-        // }
         console.log(correct)
         console.log(incorrect)
-      }
     }  
 
     function timeDone() {
@@ -162,7 +143,7 @@ var answerIndex;
     };
 
     function gameFinished () {
-
+      correctAnswer();
       showGameStats();
       
       audio1.get(0).remove();
@@ -177,4 +158,5 @@ var answerIndex;
       $(".correct").text("Correct Answers: " + correct);
       $(".incorrect").text("Incorrect Answers: " + incorrect);
       $(".percentage").text("Percent Answered Correctly: " + winPercentage + "%");
+
     }
