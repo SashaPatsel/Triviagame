@@ -5,7 +5,7 @@ window.onload = function() {
   newQuest();
   
 
-            $("input").on("click", function() {
+      $("input").on("click", function() {
           if ($(this).attr("value", questionIndex[5])) {
             correct ++;
             incorrect--;
@@ -97,11 +97,6 @@ var answerIndex;
     function newQuest () {
         
       for (var i = 1 ; i < 11 ; i++) {
-        // answerIndex = quizQuest.answers["a"+i];
-
-        // var radio = $("<input>")
-        // radio.addClass()
-        // radio.attr("name", "a"+1);
 
         questionIndex = quizQuest.questions["q"+i];
       $(".rando-div").append('<div class="my-border new-quest">' + 
@@ -109,13 +104,13 @@ var answerIndex;
         '<h2>' + questionIndex[0] + '</h2>' + '</div>' + '</div>' +
         '<div class="row">' + '<div class="col-md-2">' + '</div>' + 
         '<form>' + '<div class="col-md-2 radio-got">' + '<label>' +
-        '<input type="radio" name="a' + i + ' value=1">' +
+        '<input type="radio" name="' + questionIndex[0] + '" value=1">' +
          questionIndex[1] + '</label>' + '</div>' + 
-        '<div class="col-md-2">' + '<label>' +'<input type="radio" name="a' + i + 'value = 2">' +
+        '<div class="col-md-2">' + '<label>' +'<input type="radio" name="' + questionIndex[0] + '"value = 2">' +
          questionIndex[2] + '</label>' + '</div>' + '<div class="col-md-2">' + 
-        '<label>' + '<input type="radio" name="a' + i + ' value = 3">' + 
+        '<label>' + '<input type="radio" name="' + questionIndex[0] + '" value = 3">' + 
         questionIndex[3] + '</label>' + '</div>' + 
-        '<div class="col-md-2">' + '<label>' + '<input type="radio" name="a' + i + ' value = 4">' +
+        '<div class="col-md-2">' + '<label>' + '<input type="radio" name="' + questionIndex[0] + '" value = 4">' +
         questionIndex[4] + '</label>' + '</div>' + 
         '</form>' + '<div class="col-md-2">' + '</div>' + '</div>' +
         '<br>' + '</div>' + '<br>');
